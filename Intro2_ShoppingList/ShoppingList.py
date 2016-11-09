@@ -4,11 +4,12 @@ shoppinglist = []
 command = ""
 
 # Read in the file and prevent us from entering new things
-f = open("shoppinglist.txt", 'r')
-for line in f:
-	shoppinglist.append(line.rstrip()) # Removes newline character, show why we need this
-	command = "done"
-f.close()
+if os.path.isfile("shoppinglist.txt"):
+	f = open("shoppinglist.txt", 'r')
+	for line in f:
+    		shoppinglist.append(line.rstrip()) # Removes newline character, show why we need this
+        	command = "done"
+    	f.close()
 
 # We're going to loop until the user has entered all the items they want
 while command != "done":
@@ -31,9 +32,6 @@ while len(shoppinglist) > 0:
 	# Effectively purchase an item
 	command = input("Enter an item code to remove it (done to finish): ")
 	if command == "done":
-		quit()
+		break
 	else:
 		del shoppinglist[int(command)-1]
-
-print("You have completed your shopping list")
-
