@@ -13,8 +13,8 @@ import time
 
 # returns true if choice1 is the winner
 def CheckWin(choice1, choice2):
-	choice1looser = (choice1-1) % 3
-	return choice1looser == choice2
+    choice1looser = (choice1-1) % 3
+    return choice1looser == choice2
 
 random.seed(time.time())
 
@@ -23,18 +23,20 @@ wordToId = { "rock" : 0, "paper" : 1, "scissors" : 2}
 
 command = ''
 while command != "stop":
-	command = raw_input("Please enter rock, paper or scissors: ")
-	choice = wordToId[command]
+    command = input("Please enter rock, paper or scissors: ")
+    if command == "done":
+        break
+    choice = wordToId[command]
 
-	computerchoice = int(random.randint(0, 2))
-	computercommand = choices[computerchoice]
+    computerchoice = int(random.randint(0, 2))
+    computercommand = idToWord[computerchoice]
 
-	print("PC chose {}".format(computercommand))
+    print("PC chose {}".format(computercommand))
 
-	if CheckWin(choice, computerchoice):
-		print("You win!")
-	elif choice == computerchoice:
-		print("Tied!")
-	else:
-		print("You lose!")
+    if CheckWin(choice, computerchoice):
+        print("You win!")
+    elif choice == computerchoice:
+        print("Tied!")
+    else:
+        print("You lose!")
 
