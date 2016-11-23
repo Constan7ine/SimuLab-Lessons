@@ -13,7 +13,7 @@ vals = (ON, OFF)
 
 def init(n=N, randrow=False):
     grid = np.zeros(shape=(n,n))
-    grid[0,n/2] = ON
+    grid[0,n//2] = ON
     return grid
 
 def update(d):
