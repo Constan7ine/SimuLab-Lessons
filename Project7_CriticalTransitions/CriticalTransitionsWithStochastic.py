@@ -5,8 +5,8 @@ import math
 
 h = 0.0
 r = 3.0
-sigma = 0.01
-
+sigma = 0.1
+dt = 0.1
 
 # Initial conditions
 
@@ -18,7 +18,7 @@ def h(u):
 def dW(dt):
     return math.sqrt(dt) * random.normalvariate(0, 1)
 
-h = [h(ui) for ui in u]
+h = [h(ui) + sigma*dW(dt)/dt for ui in u]
     
 plt.plot(h, u)
 plt.show()
